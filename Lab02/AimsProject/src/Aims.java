@@ -1,6 +1,5 @@
 
 public class Aims {
-
 	public static void main(String[] args) {
 		Cart anOrder = new Cart();
         DigitalVideoDisc dvd1= new DigitalVideoDisc("The Lion king", "Animation", "Roger Allers", 87, 19.95f);
@@ -11,7 +10,9 @@ public class Aims {
         anOrder.addDigitalVideodisc(dvd3);
         anOrder.removeDigitalVideoDisc(dvd3);
         anOrder.removeDigitalVideoDisc(dvd3);
-
+        anOrder.addDigitalVideodisc(dvd3);
+        
+        
         float totalCost= anOrder.totalCost();
         System.out.printf("Total Cost is: %.2f", totalCost);
 	}
