@@ -12,7 +12,6 @@ public class Aims {
         anOrder.removeDigitalVideoDisc(dvd3);
         anOrder.addDigitalVideodisc(dvd3);
         
-        
         float totalCost= anOrder.totalCost();
         System.out.printf("Total Cost is: %.2f", totalCost);
 	}
