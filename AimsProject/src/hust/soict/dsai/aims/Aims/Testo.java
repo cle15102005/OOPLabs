@@ -7,6 +7,7 @@ import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Track;
+import hust.soict.dsai.aims.screen.CartScreen;
 
 public class Testo {
 	
@@ -25,22 +26,17 @@ public class Testo {
 		CDs.add(t1);
 		CDs.add(t2);
 		
-		CompactDisc cd= new CompactDisc(1, "Gaoranger", "Super Sentai", 30.15f, "Kurosaki", "Ichigo", CDs);
-		DigitalVideoDisc dvd= new DigitalVideoDisc(2, "Star wars", "Science fiction", 24.95f, 87, "Geogre Lucas");
-		Book book1= new Book(3, "Murphy", "Psychology", 17.65f, authors);
-		Book book2= new Book(4, "OOP", "IT", 15.55f, authors);
+		CompactDisc cd= new CompactDisc("Gaoranger", "Super Sentai", 30.15f, 0, "Kurosaki", "Ichigo", CDs);
+		DigitalVideoDisc dvd= new DigitalVideoDisc("Star wars", "Science fiction", 24.95f, 87, "Geogre Lucas");
+		Book book1= new Book("Murphy", "Psychology", 17.65f, authors);
+		Book book2= new Book("OOP", "IT", 15.55f, authors);
 
 		mediae.add(cd);
 		mediae.add(dvd);
 		mediae.add(book1);
 		mediae.add(book2);
 		
-		for(Media m: mediae) {
-			System.out.println(m.toString());
-			cart.addMedia(m);
-		}
-		System.out.println(cart.totalCost());
-		cart.sortByCostTitle();
-	}
+		new CartScreen(cart);
+	}	
 }
 
