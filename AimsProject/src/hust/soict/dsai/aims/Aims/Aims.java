@@ -3,6 +3,7 @@ package hust.soict.dsai.aims.Aims;
 import java.util.ArrayList;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
@@ -11,6 +12,8 @@ import hust.soict.dsai.aims.media.Track;
 import hust.soict.dsai.aims.store.Store;
 
 import java.util.Scanner;
+
+import javax.naming.LimitExceededException;
 
 public class Aims {
 	public static void showMenu() { 
@@ -60,7 +63,7 @@ public class Aims {
 		System.out.println("Please choose a number: 0-1-2-3-4-5"); 
 		} 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LimitExceededException, PlayerException {
 		Store store= new Store();
 		Cart cart= new Cart();
 		ArrayList<String> authors= new ArrayList<String>();
@@ -74,11 +77,11 @@ public class Aims {
 		CDs.add(t1);
 		CDs.add(t2);
 		
-		CompactDisc cd= new CompactDisc(1, "Gaoranger", "Super Sentai", 30.15f, "Kurosaki", "Ichigo", CDs);
-		DigitalVideoDisc dvd= new DigitalVideoDisc(2, "Star wars", "Science fiction", 24.95f, 87, "Geogre Lucas");
-		Book book1= new Book(3, "Murphy", "Psychology", 17.65f, authors);
-		Book book2= new Book(4, "OOP", "IT", 15.55f, authors);
-		Book book3= new Book(5, "CompArch", "IT", 15.65f, authors);
+		CompactDisc cd= new CompactDisc("Gaoranger", "Super Sentai", 30.15f, 0, "Kurosaki", "Ichigo", CDs);
+		DigitalVideoDisc dvd= new DigitalVideoDisc("Star wars", "Science fiction", 24.95f, 87, "Geogre Lucas");
+		Book book1= new Book("Murphy", "Psychology", 17.65f, authors);
+		Book book2= new Book("OOP", "IT", 15.55f, authors);
+		Book book3= new Book("CompArch", "IT", 15.65f, authors);
 
 		store.addMedia(cd);
 		store.addMedia(dvd);
@@ -138,11 +141,21 @@ public class Aims {
 			    else {
 			    	if(media instanceof DigitalVideoDisc) {
 			    		DigitalVideoDisc disc= (DigitalVideoDisc) media;
-			    		disc.play();
+			    		try {
+							disc.play();
+						} catch (PlayerException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 			    	}
 			    	if(media instanceof CompactDisc) {
 			    		CompactDisc disc= (CompactDisc) media;
-			    		disc.play();
+			    		try {
+							disc.play();
+						} catch (PlayerException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 			    	}
 			    }
 		    }
